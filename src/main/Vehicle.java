@@ -3,11 +3,14 @@ public class Vehicle{
 	private int currentSpeed;
 	private int direction;
 	private String ownerName;
-	private static int highestVehicleIdentificationNumberIssued = 4567;
-	private int vehicleId;
-
+	private static int highestVehicleIdentificationNumberIssued = 1000;
+	private int vehicleId ;
+	public static final int TURN_LEFT = 0;
+	public static final int TURN_RIGHT = 1;
+	private int turnOption;
+	
 	public Vehicle(){
-
+	this.vehicleId = ++highestVehicleIdentificationNumberIssued;
 
 	}
 	public Vehicle(String ownerName,int currentSpeed,int direction,int vehicleId){
@@ -29,21 +32,27 @@ public class Vehicle{
 	public int getVehicleId(){
 		return vehicleId;
 	}
+	public int getTurnOption(){
+		return turnOption;
+	}
 	public int changeSpeed(int speed){
 		return this.currentSpeed + speed;
 		
 	}
-	public void stop(){
-		this.currentSpeed = 0;
+	public int stop(){
+		this.currentSpeed = 0;		
+		return this.currentSpeed;
 	}
-	public void turnDegrees(int direction){
+	public int changeDirection(int direction ,int turnOption){
+		this.turnOption = turnOption;
 		this.direction = direction;
-	}
-	public void turnLeftRight(){
-		
+		return this.direction;
 	}
 	public static int getHighestVehicleIdentificationNumberIssued(){
 		return highestVehicleIdentificationNumberIssued;
+	}
+	public String toString(){
+		return currentSpeed+" "+direction;
 	}
 
 }
